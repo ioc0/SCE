@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Drawing;
 using ScintillaNET;
 
@@ -24,7 +23,6 @@ namespace SCE
 
         #endregion Constants
 
-
         #region Fields
 
         private Scintilla _scintilla;
@@ -34,7 +32,6 @@ namespace SCE
         private string _text;
 
         #endregion Fields
-
 
         #region Methods
 
@@ -73,7 +70,7 @@ namespace SCE
             {
                 // TODO Still using old API
                 // This will style the _length of chars and advance the style pointer.
-                ((INativeScintilla)_scintilla).SetStyling(length, style);
+                ((INativeScintilla) _scintilla).SetStyling(length, style);
             }
         }
 
@@ -82,7 +79,7 @@ namespace SCE
         {
             // TODO Still using the old API
             // Signals that we're going to begin styling from this point.
-            ((INativeScintilla)_scintilla).StartStyling(_startPos, 0x1F);
+            ((INativeScintilla) _scintilla).StartStyling(_startPos, 0x1F);
 
             // Run our humble lexer...
             StyleWhitespace();
@@ -91,9 +88,9 @@ namespace SCE
                 case '[':
 
                     // Section, default, comment
-                    StyleUntilMatch(SECTION_STYLE, new char[] { ']' });
+                    StyleUntilMatch(SECTION_STYLE, new char[] {']'});
                     StyleCh(SECTION_STYLE);
-                    StyleUntilMatch(DEFAULT_STYLE, new char[] { ';' });
+                    StyleUntilMatch(DEFAULT_STYLE, new char[] {';'});
                     goto case ';';
 
                 case ';':
@@ -105,7 +102,7 @@ namespace SCE
                 default:
 
                     // Key, assignment, quote, value, comment
-                    StyleUntilMatch(KEY_STYLE, new char[] { '=', ';' });
+                    StyleUntilMatch(KEY_STYLE, new char[] {'=', ';'});
                     switch (Read())
                     {
                         case '=':
@@ -117,8 +114,8 @@ namespace SCE
                                 case '"':
 
                                     // Quote
-                                    StyleCh(QUOTED_STYLE);  // '"'
-                                    StyleUntilMatch(QUOTED_STYLE, new char[] { '"' });
+                                    StyleCh(QUOTED_STYLE); // '"'
+                                    StyleUntilMatch(QUOTED_STYLE, new char[] {'"'});
 
                                     // Make sure it wasn't an escaped quote
                                     if (_index > 0 && _index < _text.Length && _text[_index - 1] == '\\')
@@ -130,7 +127,7 @@ namespace SCE
                                 default:
 
                                     // Value, comment
-                                    StyleUntilMatch(VALUE_STYLE, new char[] { ';' });
+                                    StyleUntilMatch(VALUE_STYLE, new char[] {';'});
                                     SetStyle(COMMENT_STYLE, _text.Length - _index);
                                     break;
                             }
@@ -186,7 +183,6 @@ namespace SCE
         }
 
         #endregion Methods
-
 
         #region Constructors
 

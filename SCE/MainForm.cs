@@ -16,23 +16,20 @@ namespace SCE
 {
     internal sealed partial class MainForm : Form
     {
-
         private string ext;
         private const string NEW_DOCUMENT_TEXT = "Untitled";
         private const int LINE_NUMBERS_MARGIN_WIDTH = 35; // TODO Don't hardcode this
 
-       
 
         private int _newDocumentCount = 0;
         private string[] _args;
         private int _zoomLevel;
 
-       
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // using (AboutForm aboutForm = new AboutForm())
-           //     aboutForm.ShowDialog(this);
+            // using (AboutForm aboutForm = new AboutForm())
+            //     aboutForm.ShowDialog(this);
         }
 
 
@@ -257,7 +254,7 @@ namespace SCE
             SetScintillaToCurrentOptions(doc);
             doc.Text = String.Format(CultureInfo.CurrentCulture, "{0}{1}", NEW_DOCUMENT_TEXT, ++_newDocumentCount);
             doc.Show(dockPanel);
-            
+
             return doc;
         }
 
@@ -279,7 +276,6 @@ namespace SCE
 
         private void OpenFile()
         {
-            
             if (openFileDialog.ShowDialog() != DialogResult.OK)
                 return;
 
@@ -287,14 +283,12 @@ namespace SCE
             try
             {
                 ext = Path.GetExtension(openFileDialog.FileName).Normalize();
-                
-
             }
             catch (Exception)
             {
                 MessageBox.Show("Error in string 280");
             }
-            
+
             foreach (string filePath in openFileDialog.FileNames)
             {
                 // Ensure this file isn't already open
@@ -314,7 +308,6 @@ namespace SCE
                     OpenFile(filePath);
                 if (ext.Equals(".cs")) SetLanguage("cs");
                 if (ext.Equals(".resx")) SetLanguage("xml");
-                
             }
         }
 
@@ -521,7 +514,6 @@ namespace SCE
 
         private void toolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
         }
 
 
@@ -619,21 +611,14 @@ namespace SCE
             UpdateAllScintillaZoom();
         }
 
-       
-
-
         #region Properties
 
         public DocumentForm ActiveDocument
         {
-            get
-            {
-                return dockPanel.ActiveDocument as DocumentForm;
-            }
+            get { return dockPanel.ActiveDocument as DocumentForm; }
         }
 
         #endregion Properties
-
 
         #region Constructors
 
@@ -660,7 +645,7 @@ namespace SCE
 
             // Set the application title
             Text = Program.Title;
-           // aboutToolStripMenuItem.Text = String.Format(CultureInfo.CurrentCulture, "&About {0}", Program.Title);
+            // aboutToolStripMenuItem.Text = String.Format(CultureInfo.CurrentCulture, "&About {0}", Program.Title);
         }
 
         #endregion Constructors

@@ -41,7 +41,8 @@ namespace SCE
                     Environment.NewLine,
                     Environment.NewLine);
 
-                DialogResult dr = MessageBox.Show(this, message, Program.Title, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation);
+                DialogResult dr = MessageBox.Show(this, message, Program.Title, MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Exclamation);
                 if (dr == DialogResult.Cancel)
                 {
                     // Stop closing
@@ -123,11 +124,10 @@ namespace SCE
         {
             // Style the _text
             if (_iniLexer)
-                SCE.IniLexer.StyleNeeded((Scintilla)sender, e.Range);
+                SCE.IniLexer.StyleNeeded((Scintilla) sender, e.Range);
         }
 
         #endregion Methods
-
 
         #region Properties
 
@@ -147,16 +147,11 @@ namespace SCE
 
         public Scintilla Scintilla
         {
-            get
-            {
-                return scintilla;
-            }
+            get { return scintilla; }
         }
 
         #endregion Properties
 
-
-        
         public DocumentForm()
         {
             InitializeComponent();
