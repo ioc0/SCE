@@ -28,8 +28,8 @@ namespace SCE
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // using (AboutForm aboutForm = new AboutForm())
-            //     aboutForm.ShowDialog(this);
+            AboutForm form = new AboutForm();
+            form.Show();
         }
 
 
