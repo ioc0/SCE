@@ -902,7 +902,7 @@
             // 
             this.dockPanel.ActiveAutoHideContent = null;
             this.dockPanel.AllowDrop = true;
-            this.dockPanel.AllowEndUserNestedDocking = false;
+            this.dockPanel.AllowEndUserNestedDocking = true;
             this.dockPanel.AutoSize = true;
             this.dockPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
