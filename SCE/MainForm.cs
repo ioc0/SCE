@@ -308,6 +308,9 @@ namespace SCE
                     OpenFile(filePath);
                 if (ext.Equals(".cs")) SetLanguage("cs");
                 if (ext.Equals(".resx")) SetLanguage("xml");
+                if (ext.Equals(".sql")) SetLanguage("mssql");
+                if (ext.Equals(".py")) SetLanguage("python");
+                
             }
         }
 
@@ -688,6 +691,11 @@ namespace SCE
         private void tsmiINI_Click(object sender, EventArgs e)
         {
             SetLanguage("ini");
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            NewDocument();
         }
     }
 }
